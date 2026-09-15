@@ -1,0 +1,6 @@
+{
+  "name": "한국사능력검정시험 통계 관리 시스템",
+  "description": "국사편찬위원회 한국사능력검정시험 관리자를 위한 접수통계, 채점통계, 결제통계 및 웹차트 시각화 대시보드",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

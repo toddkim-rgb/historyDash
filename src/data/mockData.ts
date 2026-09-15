@@ -1,0 +1,480 @@
+import { RegionalStat, TestCenterStat, ExamOverallScoring, MeanSDStat, PaymentRow } from '../types';
+
+export const EXAM_ROUNDS = ['제78회', '제77회', '제76회', '제75회'];
+
+export const REGIONS = ['전체', '서울', '경기', '부산', '대구', '인천', '대전/세종', '광주/전남', '기타'];
+
+export const DISTRICTS = [
+  '전체',
+  '서울1',
+  '서울2',
+  '서울3',
+  '경기북부',
+  '경기남부',
+  '부산1',
+  '대구1',
+  '인천1',
+  '대전/세종',
+  '광주/전남',
+  '강원',
+  '충북',
+  '충남',
+  '전북',
+  '경북',
+  '경남',
+  '제주'
+];
+
+export const OCCUPATIONS = [
+  '전체',
+  '초등학생',
+  '중학생',
+  '고등학생',
+  '대학생',
+  '취업준비생',
+  '직장인',
+  '공무원/군인',
+  '기타'
+];
+
+export const REGIONAL_STATS: Record<string, RegionalStat[]> = {
+  '제78회': [
+    { id: '1', region: '서울1', advanced: 18420, basic: 4200, total: 22620, percentage: 14.3, centerCount: 38 },
+    { id: '2', region: '서울2', advanced: 16380, basic: 3850, total: 20230, percentage: 12.8, centerCount: 34 },
+    { id: '3', region: '서울3', advanced: 12950, basic: 2980, total: 15930, percentage: 10.1, centerCount: 28 },
+    { id: '4', region: '경기북부', advanced: 14250, basic: 3120, total: 17370, percentage: 11.0, centerCount: 31 },
+    { id: '5', region: '경기남부', advanced: 22480, basic: 5340, total: 27820, percentage: 17.6, centerCount: 46 },
+    { id: '6', region: '부산1', advanced: 9870, basic: 2450, total: 12320, percentage: 7.8, centerCount: 24 },
+    { id: '7', region: '대구1', advanced: 7650, basic: 1890, total: 9540, percentage: 6.0, centerCount: 19 },
+    { id: '8', region: '인천1', advanced: 6720, basic: 1640, total: 8360, percentage: 5.3, centerCount: 18 },
+    { id: '9', region: '대전/세종', advanced: 5840, basic: 1420, total: 7260, percentage: 4.6, centerCount: 16 },
+    { id: '10', region: '광주/전남', advanced: 4910, basic: 1210, total: 6120, percentage: 3.9, centerCount: 15 },
+    { id: '11', region: '충남', advanced: 3120, basic: 780, total: 3900, percentage: 2.5, centerCount: 11 },
+    { id: '12', region: '충북', advanced: 2240, basic: 560, total: 2800, percentage: 1.8, centerCount: 8 },
+    { id: '13', region: '전북', advanced: 2050, basic: 510, total: 2560, percentage: 1.6, centerCount: 8 },
+    { id: '14', region: '경남', advanced: 2120, basic: 530, total: 2650, percentage: 1.7, centerCount: 9 },
+    { id: '15', region: '경북', advanced: 1890, basic: 470, total: 2360, percentage: 1.5, centerCount: 8 },
+    { id: '16', region: '강원', advanced: 1180, basic: 290, total: 1470, percentage: 0.9, centerCount: 6 },
+    { id: '17', region: '제주', advanced: 687, basic: 173, total: 860, percentage: 0.5, centerCount: 4 },
+  ],
+  '제77회': [
+    { id: '1', region: '서울1', advanced: 17850, basic: 4050, total: 21900, percentage: 14.4, centerCount: 38 },
+    { id: '2', region: '서울2', advanced: 15920, basic: 3710, total: 19630, percentage: 12.9, centerCount: 34 },
+    { id: '3', region: '서울3', advanced: 12500, basic: 2880, total: 15380, percentage: 10.1, centerCount: 28 },
+    { id: '4', region: '경기북부', advanced: 13800, basic: 3010, total: 16810, percentage: 11.0, centerCount: 31 },
+    { id: '5', region: '경기남부', advanced: 21950, basic: 5180, total: 27130, percentage: 17.8, centerCount: 46 },
+    { id: '6', region: '부산1', advanced: 9540, basic: 2380, total: 11920, percentage: 7.8, centerCount: 24 },
+    { id: '7', region: '대구1', advanced: 7420, basic: 1830, total: 9250, percentage: 6.1, centerCount: 19 },
+    { id: '8', region: '인천1', advanced: 6510, basic: 1590, total: 8100, percentage: 5.3, centerCount: 18 },
+    { id: '9', region: '기타 권역', advanced: 21250, basic: 5180, total: 26430, percentage: 14.6, centerCount: 65 },
+  ]
+};
+
+export const TEST_CENTERS: Record<string, TestCenterStat[]> = {
+  '제78회': [
+    {
+      id: 'c1',
+      district: '서울1',
+      centerName: '강신중학교',
+      assignedAdvanced: 180,
+      assignedBasic: 120,
+      registeredAdvanced: 165,
+      registeredBasic: 108,
+      availableAdvanced: 15,
+      availableBasic: 12,
+      rateAdvanced: 92,
+      rateBasic: 90
+    },
+    {
+      id: 'c2',
+      district: '서울1',
+      centerName: '목동중학교',
+      assignedAdvanced: 200,
+      assignedBasic: 150,
+      registeredAdvanced: 196,
+      registeredBasic: 148,
+      availableAdvanced: 4,
+      availableBasic: 2,
+      rateAdvanced: 98,
+      rateBasic: 99
+    },
+    {
+      id: 'c3',
+      district: '서울1',
+      centerName: '등촌고등학교',
+      assignedAdvanced: 220,
+      assignedBasic: 180,
+      registeredAdvanced: 182,
+      registeredBasic: 155,
+      availableAdvanced: 38,
+      availableBasic: 25,
+      rateAdvanced: 83,
+      rateBasic: 86
+    },
+    {
+      id: 'c4',
+      district: '서울1',
+      centerName: '양천고등학교',
+      assignedAdvanced: 250,
+      assignedBasic: 180,
+      registeredAdvanced: 245,
+      registeredBasic: 175,
+      availableAdvanced: 5,
+      availableBasic: 5,
+      rateAdvanced: 98,
+      rateBasic: 97
+    },
+    {
+      id: 'c5',
+      district: '서울2',
+      centerName: '잠실중학교',
+      assignedAdvanced: 240,
+      assignedBasic: 160,
+      registeredAdvanced: 236,
+      registeredBasic: 156,
+      availableAdvanced: 4,
+      availableBasic: 4,
+      rateAdvanced: 98,
+      rateBasic: 98
+    },
+    {
+      id: 'c6',
+      district: '서울2',
+      centerName: '대치중학교',
+      assignedAdvanced: 200,
+      assignedBasic: 150,
+      registeredAdvanced: 198,
+      registeredBasic: 147,
+      availableAdvanced: 2,
+      availableBasic: 3,
+      rateAdvanced: 99,
+      rateBasic: 98
+    },
+    {
+      id: 'c7',
+      district: '경기남부',
+      centerName: '수원공업고',
+      assignedAdvanced: 250,
+      assignedBasic: 180,
+      registeredAdvanced: 238,
+      registeredBasic: 170,
+      availableAdvanced: 12,
+      availableBasic: 10,
+      rateAdvanced: 95,
+      rateBasic: 94
+    },
+    {
+      id: 'c8',
+      district: '경기남부',
+      centerName: '성남고등학교',
+      assignedAdvanced: 220,
+      assignedBasic: 140,
+      registeredAdvanced: 215,
+      registeredBasic: 135,
+      availableAdvanced: 5,
+      availableBasic: 5,
+      rateAdvanced: 98,
+      rateBasic: 96
+    },
+    {
+      id: 'c9',
+      district: '경기북부',
+      centerName: '의정부여자고등학교',
+      assignedAdvanced: 180,
+      assignedBasic: 120,
+      registeredAdvanced: 162,
+      registeredBasic: 105,
+      availableAdvanced: 18,
+      availableBasic: 15,
+      rateAdvanced: 90,
+      rateBasic: 88
+    },
+    {
+      id: 'c10',
+      district: '부산1',
+      centerName: '동래고등학교',
+      assignedAdvanced: 210,
+      assignedBasic: 150,
+      registeredAdvanced: 198,
+      registeredBasic: 141,
+      availableAdvanced: 12,
+      availableBasic: 9,
+      rateAdvanced: 94,
+      rateBasic: 94
+    },
+    {
+      id: 'c11',
+      district: '대구1',
+      centerName: '경북고등학교',
+      assignedAdvanced: 200,
+      assignedBasic: 140,
+      registeredAdvanced: 190,
+      registeredBasic: 132,
+      availableAdvanced: 10,
+      availableBasic: 8,
+      rateAdvanced: 95,
+      rateBasic: 94
+    },
+    {
+      id: 'c12',
+      district: '인천1',
+      centerName: '인천송도고등학교',
+      assignedAdvanced: 200,
+      assignedBasic: 140,
+      registeredAdvanced: 186,
+      registeredBasic: 131,
+      availableAdvanced: 14,
+      availableBasic: 9,
+      rateAdvanced: 93,
+      rateBasic: 94
+    }
+  ]
+};
+
+export const SCORING_STATS_78: ExamOverallScoring = {
+  totalApplicants: 128640,
+  absentees: 16881,
+  testTakers: 111759,
+  failedCount: 43897,
+  passedCount: 67862,
+  overallPassRate: 60.72,
+  advanced: {
+    applicants: 115951,
+    absentees: 16116,
+    testTakers: 99835,
+    failedCount: 38754,
+    passedCount: 61081,
+    passRate: 61.18,
+    maxScoreHolders: 497,
+    grade1: 28919,
+    grade1Rate: 28.97,
+    grade2: 17135,
+    grade2Rate: 17.16,
+    grade3: 15027,
+    grade3Rate: 15.05
+  },
+  basic: {
+    applicants: 12689,
+    absentees: 765,
+    testTakers: 11924,
+    failedCount: 5143,
+    passedCount: 6781,
+    passRate: 56.87,
+    maxScoreHolders: 82,
+    grade4: 2514,
+    grade4Rate: 21.08,
+    grade5: 1985,
+    grade5Rate: 16.65,
+    grade6: 2282,
+    grade6Rate: 19.14
+  }
+};
+
+export const MEAN_SD_STATS_78: MeanSDStat[] = [
+  { level: '심화', gender: '남', takers: 55280, mean: 68.4, stdDev: 18.2, passCount: 34850, passRate: 63.04 },
+  { level: '심화', gender: '여', takers: 44555, mean: 71.2, stdDev: 17.5, passCount: 29230, passRate: 65.60 },
+  { level: '심화', gender: '합계', takers: 99835, mean: 69.6, stdDev: 17.9, passCount: 64080, passRate: 64.19 },
+  { level: '기본', gender: '남', takers: 6320, mean: 72.8, stdDev: 16.8, passCount: 3520, passRate: 55.70 },
+  { level: '기본', gender: '여', takers: 5604, mean: 74.5, stdDev: 15.6, passCount: 3261, passRate: 58.19 },
+  { level: '기본', gender: '합계', takers: 11924, mean: 73.6, stdDev: 16.2, passCount: 6781, passRate: 56.87 },
+  { level: '전체', gender: '총합계', takers: 111759, mean: 70.1, stdDev: 17.7, passCount: 70861, passRate: 63.41 }
+];
+
+export const PAYMENT_ROWS_78: PaymentRow[] = [
+  {
+    method: '신용카드',
+    subType: '전체',
+    normalCount: 21281,
+    refund100Count: 2587,
+    refund50Count: 1165,
+    refund75Count: 6,
+    totalGeneralCount: 24959,
+    totalGeneralAmount: 673893000,
+    beneficiaryNormalCount: 232,
+    beneficiaryRefund100Count: 24,
+    beneficiaryRefund50Count: 8,
+    totalBeneficiaryCount: 264,
+    totalBeneficiaryAmount: 3564000,
+    netRevenue: 591381000
+  },
+  {
+    method: '신용카드',
+    subType: '심화',
+    normalCount: 21281,
+    refund100Count: 2587,
+    refund50Count: 1165,
+    refund75Count: 6,
+    totalGeneralCount: 24959,
+    totalGeneralAmount: 673893000,
+    beneficiaryNormalCount: 232,
+    beneficiaryRefund100Count: 24,
+    beneficiaryRefund50Count: 8,
+    totalBeneficiaryCount: 264,
+    totalBeneficiaryAmount: 3564000,
+    netRevenue: 591381000
+  },
+  {
+    method: '신용카드',
+    subType: '기본',
+    normalCount: 0,
+    refund100Count: 0,
+    refund50Count: 0,
+    refund75Count: 0,
+    totalGeneralCount: 0,
+    totalGeneralAmount: 0,
+    beneficiaryNormalCount: 0,
+    beneficiaryRefund100Count: 0,
+    beneficiaryRefund50Count: 0,
+    totalBeneficiaryCount: 0,
+    totalBeneficiaryAmount: 0,
+    netRevenue: 0
+  },
+  {
+    method: '가상계좌',
+    subType: '전체',
+    normalCount: 34384,
+    refund100Count: 3888,
+    refund50Count: 1758,
+    refund75Count: 9,
+    totalGeneralCount: 39871,
+    totalGeneralAmount: 1054917000,
+    beneficiaryNormalCount: 219,
+    beneficiaryRefund100Count: 25,
+    beneficiaryRefund50Count: 10,
+    totalBeneficiaryCount: 254,
+    totalBeneficiaryAmount: 3429000,
+    netRevenue: 953825750
+  },
+  {
+    method: '가상계좌',
+    subType: '심화',
+    normalCount: 34384,
+    refund100Count: 3888,
+    refund50Count: 1758,
+    refund75Count: 9,
+    totalGeneralCount: 39871,
+    totalGeneralAmount: 1054917000,
+    beneficiaryNormalCount: 219,
+    beneficiaryRefund100Count: 25,
+    beneficiaryRefund50Count: 10,
+    totalBeneficiaryCount: 254,
+    totalBeneficiaryAmount: 3429000,
+    netRevenue: 953825750
+  },
+  {
+    method: '가상계좌',
+    subType: '기본',
+    normalCount: 0,
+    refund100Count: 0,
+    refund50Count: 0,
+    refund75Count: 0,
+    totalGeneralCount: 0,
+    totalGeneralAmount: 0,
+    beneficiaryNormalCount: 0,
+    beneficiaryRefund100Count: 0,
+    beneficiaryRefund50Count: 0,
+    totalBeneficiaryCount: 0,
+    totalBeneficiaryAmount: 0,
+    netRevenue: 0
+  },
+  {
+    method: '카카오페이',
+    subType: '전체',
+    normalCount: 45625,
+    refund100Count: 5432,
+    refund50Count: 2632,
+    refund75Count: 7,
+    totalGeneralCount: 53696,
+    totalGeneralAmount: 1449792000,
+    beneficiaryNormalCount: 438,
+    beneficiaryRefund100Count: 54,
+    beneficiaryRefund50Count: 26,
+    totalBeneficiaryCount: 518,
+    totalBeneficiaryAmount: 6993000,
+    netRevenue: 1273542750
+  },
+  {
+    method: '카카오페이',
+    subType: '심화',
+    normalCount: 45625,
+    refund100Count: 5432,
+    refund50Count: 2632,
+    refund75Count: 7,
+    totalGeneralCount: 53696,
+    totalGeneralAmount: 1449792000,
+    beneficiaryNormalCount: 438,
+    beneficiaryRefund100Count: 54,
+    beneficiaryRefund50Count: 26,
+    totalBeneficiaryCount: 518,
+    totalBeneficiaryAmount: 6993000,
+    netRevenue: 1273542750
+  },
+  {
+    method: '카카오페이',
+    subType: '기본',
+    normalCount: 0,
+    refund100Count: 0,
+    refund50Count: 0,
+    refund75Count: 0,
+    totalGeneralCount: 0,
+    totalGeneralAmount: 0,
+    beneficiaryNormalCount: 0,
+    beneficiaryRefund100Count: 0,
+    beneficiaryRefund50Count: 0,
+    totalBeneficiaryCount: 0,
+    totalBeneficiaryAmount: 0,
+    netRevenue: 0
+  },
+  {
+    method: '네이버페이',
+    subType: '전체',
+    normalCount: 33146,
+    refund100Count: 4064,
+    refund50Count: 2178,
+    refund75Count: 7,
+    totalGeneralCount: 40295,
+    totalGeneralAmount: 1087965000,
+    beneficiaryNormalCount: 371,
+    beneficiaryRefund100Count: 40,
+    beneficiaryRefund50Count: 17,
+    totalBeneficiaryCount: 428,
+    totalBeneficiaryAmount: 5778000,
+    netRevenue: 929515500
+  },
+  {
+    method: '모바일 소액결제',
+    subType: '전체',
+    normalCount: 0,
+    refund100Count: 0,
+    refund50Count: 0,
+    refund75Count: 0,
+    totalGeneralCount: 0,
+    totalGeneralAmount: 0,
+    beneficiaryNormalCount: 0,
+    beneficiaryRefund100Count: 0,
+    beneficiaryRefund50Count: 0,
+    totalBeneficiaryCount: 0,
+    totalBeneficiaryAmount: 0,
+    netRevenue: 0
+  }
+];
+
+export const DAILY_REGISTRATION_TREND = [
+  { date: '05-15 (1일차)', count: 48920, cumulative: 48920, target: 45000 },
+  { date: '05-16 (2일차)', count: 35140, cumulative: 84060, target: 80000 },
+  { date: '05-17 (3일차)', count: 28410, cumulative: 112470, target: 110000 },
+  { date: '05-18 (4일차)', count: 19850, cumulative: 132320, target: 130000 },
+  { date: '05-19 (5일차)', count: 14230, cumulative: 146550, target: 145000 },
+  { date: '05-20 (6일차)', count: 8640, cumulative: 155190, target: 152000 },
+  { date: '05-21 (마감일)', count: 3230, cumulative: 158420, target: 155000 }
+];
+
+export const SCORE_DISTRIBUTION_DATA = [
+  { range: '90~100점', count: 18450, rate: 16.5, grade: '1급 구간' },
+  { range: '80~89점', count: 24820, rate: 22.2, grade: '1급 구간' },
+  { range: '70~79점', count: 19250, rate: 17.2, grade: '2급 구간' },
+  { range: '60~69점', count: 17120, rate: 15.3, grade: '3급 구간' },
+  { range: '50~59점', count: 14380, rate: 12.9, grade: '과락/4급' },
+  { range: '40~49점', count: 9840, rate: 8.8, grade: '과락/5급' },
+  { range: '0~39점', count: 7899, rate: 7.1, grade: '과락' }
+];
